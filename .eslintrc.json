@@ -19,6 +19,7 @@
         "react"
     ],
     "rules": {
-        "no-extra-semi": "off"
+        "no-extra-semi": "off",
+        "semi": "off"
     }
 }
