@@ -1,0 +1,43 @@
+{
+  "name": "minesweeper",
+  "version": "1.0.0",
+  "description": "Minesweeper, with a twist",
+  "main": "index.js",
+  "scripts": {
+    "test": "node spec/tests.js",
+    "build": "npx webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachMcCain/minesweeper.git"
+  },
+  "keywords": [
+    "minesweeper",
+    "game"
+  ],
+  "author": "Zach McCain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zachMcCain/minesweeper/issues"
+  },
+  "homepage": "https://github.com/zachMcCain/minesweeper#readme",
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
+    "@babel/preset-react": "^7.12.13",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.21.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "webpack": "^5.24.3",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
