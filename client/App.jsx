@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Board from './components/Board.jsx';
 
 const App = ({ SweeperBoard }) => {
-  const [boardSize, setBoardSize] = useState(10);
-  const [mines, setMines] = useState(7);
+  const [boardSize, setBoardSize] = useState(30);
+  const [mines, setMines] = useState(20);
   let board = new SweeperBoard(boardSize, boardSize);
   board.placeMines(mines);
   console.table('created board: ', board.board)
