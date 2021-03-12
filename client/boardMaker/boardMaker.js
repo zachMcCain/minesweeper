@@ -72,10 +72,12 @@ class Board {
     if (typeof this.board[y] === 'object' && typeof this.board[y][x] === 'number') {
       this.board[y][x] += 1;
     }
-    console.log('board in increment: ', this.board /*, ' x and y coords: ', x, y */)
+    // console.log('board in increment: ', this.board /*, ' x and y coords: ', x, y */)
   }
 }
 
-const sweeper = new Board(5, 5);
+const sweeper = new Board(8, 8);
 sweeper.placeMines(10);
 console.table(sweeper.board);
+
+export default Board;

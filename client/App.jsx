@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const App = (props) => {
-  return <div>Hello World!</div>
+const App = ({ Board }) => {
+  const [boardSize, setBoardSize] = useState(10);
+  return <div>{Board(boardSize, boardSize).board}</div>
+}
+
+App.propTypes = {
+  Board: PropTypes.object.isRequired
 }
 
 export default App;

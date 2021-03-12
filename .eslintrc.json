@@ -20,6 +20,7 @@
     ],
     "rules": {
         "no-extra-semi": "off",
-        "semi": "off"
+        "semi": "off",
+        "prefer-const": "off"
     }
 }
