@@ -1,4 +1,4 @@
-class Board {
+class SweeperBoard {
   constructor (width, height) {
     this.height = height;
     this.width = width;
@@ -76,8 +76,8 @@ class Board {
   }
 }
 
-const sweeper = new Board(8, 8);
+const sweeper = new SweeperBoard(8, 8);
 sweeper.placeMines(10);
 console.table(sweeper.board);
 
-export default Board;
+export default SweeperBoard;

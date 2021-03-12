@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Board from './components/Board.jsx';
 
-const App = ({ Board }) => {
+const App = ({ SweeperBoard }) => {
   const [boardSize, setBoardSize] = useState(10);
-  return <div>{Board(boardSize, boardSize).board}</div>
+  const [mines, setMines] = useState(7);
+  let board = new SweeperBoard(boardSize, boardSize);
+  board.placeMines(mines);
+  console.table('created board: ', board.board)
+  return (
+    <div>{board.board}
+      <div>
+        <Board />
+      </div>
+    </div>
+  )
 }
 
 App.propTypes = {
-  Board: PropTypes.object.isRequired
+  SweeperBoard: PropTypes.func.isRequired
 }
 
 export default App;
