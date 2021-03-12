@@ -13,7 +13,7 @@ class Board {
     for (let i = 0; i < this.height; i++) {
       board.push([]);
       for (let j = 0; j < this.width; j++) {
-        board[i].push(1);
+        board[i].push(0);
       }
     }
     return board;
@@ -33,40 +33,49 @@ class Board {
       let x = Math.floor(Math.random() * Math.floor(this.width));
       let y = Math.floor(Math.random() * Math.floor(this.height));
       // if coordinates don't already contain a mine, set coordinates and increment incrementer
-      if (!coords[x + y]) {
-        coords[x.toString() + y.toString()] = true;
+      if (!coords[x + ',' + y]) {
+        coords[x + ',' + y] = true;
         i++;
       }
     }
     // NOW, we need to place the mines on the board, and increment the surrounding spaces counters
     Object.keys(coords).forEach((key) => {
-      console.log('Coordinates: ', coords)
-      let x = Number(key.slice(0, Math.floor(key.length / 2)));
-      let y = Number(key.slice(Math.floor(key.length / 2)));
-      // Set mines to false
+      // console.log('Coordinates: ', coords)
+      let coordsArray = key.split(',');
+      // console.log(coordsArray);
+      let x = Number(coordsArray[0]);
+      let y = Number(coordsArray[1]);
+      // // Set mines to false
       this.board[y][x] = false;
-      // console.log('x coord: ', x, ' y coord: ', y, ' board: ', this.board)
-      // Increment left, right, up, and down, if exist
+      // // console.log('x coord: ', x, ' y coord: ', y, ' board: ', this.board)
+      // // Increment left, right, up, and down, if exist
+      // right
       this.incrementSpace(x + 1, y);
+      // right-top
       this.incrementSpace(x + 1, y + 1);
+      // right-bottom
       this.incrementSpace(x + 1, y - 1);
+      // left
       this.incrementSpace(x - 1, y);
+      // left top
       this.incrementSpace(x - 1, y + 1);
+      // left bottom
       this.incrementSpace(x - 1, y - 1);
+      // middle bottom
       this.incrementSpace(x, y - 1);
+      // middle top
       this.incrementSpace(x, y + 1);
     })
   }
 
   incrementSpace (x, y) {
-    // console.log('increment running')
-    // console.log('board in increment: ', this.board, ' x and y coords: ', x, y)
-    if (this.board[y] && this.board[y][x]) {
+    if (typeof this.board[y] === 'object' && typeof this.board[y][x] === 'number') {
       this.board[y][x] += 1;
     }
+    console.log('board in increment: ', this.board /*, ' x and y coords: ', x, y */)
   }
 }
 
-const sweeper = new Board(20, 20);
-sweeper.placeMines(40);
+const sweeper = new Board(5, 5);
+sweeper.placeMines(10);
 console.table(sweeper.board);
