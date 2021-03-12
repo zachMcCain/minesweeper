@@ -9,9 +9,9 @@ const App = ({ SweeperBoard }) => {
   board.placeMines(mines);
   console.table('created board: ', board.board)
   return (
-    <div>{board.board}
+    <div>
       <div>
-        <Board />
+        <Board board={board.board}/>
       </div>
     </div>
   )
