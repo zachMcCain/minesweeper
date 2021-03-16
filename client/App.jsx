@@ -15,7 +15,7 @@ const App = ({ SweeperBoard }) => {
       <ChangeSize setSize={setBoardSize}/>
       <ChangeMines setMines={setMines}/>
       <div>
-        <Board board={board.board}/>
+        <Board board={board.board} select={board.uncoverSpace}/>
       </div>
     </div>
   )
