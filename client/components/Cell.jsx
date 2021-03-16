@@ -8,7 +8,7 @@ const Cell = ({ val, select, x, y }) => {
   return <td onClick={() => {
     console.log('The x and y in onclick: ', x, ' ', y)
     select(x, y)
-  }} className="covered">{val}</td>
+  }} className="covered" id={`${x}${y}`}>{val}</td>
 }
 
 export default Cell;

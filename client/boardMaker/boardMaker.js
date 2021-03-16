@@ -1,11 +1,12 @@
 class SweeperBoard {
-  constructor (width, height) {
+  constructor (width, height, mines) {
     this.height = height;
     this.width = width;
+    this.mines = mines;
     this.board = this.makeBoard();
     this.makeBoard = this.makeBoard.bind(this);
     this.placeMines = this.placeMines.bind(this);
-    this.incrementSpace = this.incrementSpace.bind(this);
+    this._incrementSpace = this._incrementSpace.bind(this);
     this.uncoverSpace = this.uncoverSpace.bind(this);
   }
 
@@ -40,25 +41,25 @@ class SweeperBoard {
       let y = Number(coordsArray[1]);
       this.board[y][x] = false;
       // right
-      this.incrementSpace(x + 1, y);
+      this._incrementSpace(x + 1, y);
       // right-top
-      this.incrementSpace(x + 1, y + 1);
+      this._incrementSpace(x + 1, y + 1);
       // right-bottom
-      this.incrementSpace(x + 1, y - 1);
+      this._incrementSpace(x + 1, y - 1);
       // left
-      this.incrementSpace(x - 1, y);
+      this._incrementSpace(x - 1, y);
       // left top
-      this.incrementSpace(x - 1, y + 1);
+      this._incrementSpace(x - 1, y + 1);
       // left bottom
-      this.incrementSpace(x - 1, y - 1);
+      this._incrementSpace(x - 1, y - 1);
       // middle bottom
-      this.incrementSpace(x, y - 1);
+      this._incrementSpace(x, y - 1);
       // middle top
-      this.incrementSpace(x, y + 1);
+      this._incrementSpace(x, y + 1);
     })
   }
 
-  incrementSpace (x, y) {
+  _incrementSpace (x, y) {
     if (typeof this.board[y] === 'object' && typeof this.board[y][x] === 'number') {
       this.board[y][x] += 1;
     }
@@ -67,7 +68,15 @@ class SweeperBoard {
   uncoverSpace (x, y) {
     console.log('running', this.board)
     if (this.board[y][x] === false) {
-      window.alert('You\'ve lost the game')
+      let element = document.getElementById(`${x}${y}`)
+      element.classList.toggle('explosion');
+      window.alert('You have lost the game');
+      this.makeBoard();
+      this.placeMines(10);
+    } else {
+      let element = document.getElementById(`${x}${y}`)
+      console.log('the element: ', element)
+      element.classList.toggle('covered');
     }
   }
 }

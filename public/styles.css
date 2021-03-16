@@ -11,6 +11,6 @@ td {
   background-color: thistle;
 }
 
-td .explosion {
-  color: red;
+.explosion {
+  background-color: red;
 }

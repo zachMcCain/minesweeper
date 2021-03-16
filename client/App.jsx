@@ -5,8 +5,8 @@ import ChangeSize from './components/ChangeSize.jsx';
 import ChangeMines from './components/ChangeMines.jsx'
 
 const App = ({ SweeperBoard }) => {
-  const [boardSize, setBoardSize] = useState(30);
-  const [mines, setMines] = useState(20);
+  const [boardSize, setBoardSize] = useState(10);
+  const [mines, setMines] = useState(10);
   const [board, makeBoard] = useState(new SweeperBoard(boardSize, boardSize))
   board.placeMines(mines);
   console.table('created board: ', board.board)
