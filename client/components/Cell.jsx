@@ -5,7 +5,7 @@ const Cell = ({ val }) => {
     val = <span>&#128163;</span>
   }
   // Cell {val}
-  return <td>{val}</td>
+  return <td className="covered">{val}</td>
 }
 
 export default Cell;
